@@ -1,0 +1,31 @@
+<div style="height: calc(100vh - 64px)" fxLayout="row" fxLayoutAlign="center start">
+	<mat-card fxFlex.gt-sm="30%" fxFlex.lt-md="95%" class="mat-elevation-z8">
+		<mat-card-header>
+			<mat-card-title i18n="@@login">Login</mat-card-title>
+		</mat-card-header>
+		<mat-card-content>
+			<form [formGroup]="loginGroup"
+			fxLayout="column"
+			fxLayoutAlign="center center"
+			fxLayoutGap="10px"
+			(submit)="submit()">
+				<mat-form-field appearance="fill" fxFlex>
+				  <mat-label i18n="@@username">Nome de usuário</mat-label>
+				  <input matInput formControlName="username" [disabled]="isSubmitting">
+				  <mat-error i18n="@@requiredField">Campo obrigatório</mat-error>
+				</mat-form-field>
+				<mat-form-field appearance="fill" fxFlex>
+				  <mat-label i18n="@@password">Senha</mat-label>
+				  <input matInput type="password" formControlName="password" [disabled]="isSubmitting">
+				  <mat-error i18n="@@requiredField">Campo obrigatório</mat-error>
+				</mat-form-field>
+				<mat-progress-bar mode="indeterminate" *ngIf="isSubmitting"></mat-progress-bar>
+				<mat-error *ngIf="hasError">Login ou senha incorretos</mat-error>
+				<button mat-flat-button color="primary"
+				i18n="@@submit"
+				[disabled]="isSubmitting || !loginGroup.valid">Enviar</button>
+			</form>
+		</mat-card-content>
+	</mat-card>
+	
+</div>

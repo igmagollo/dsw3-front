@@ -1,0 +1,27 @@
+<mat-card class="mat-elevation-z8">
+	<mat-card-header>
+		<mat-card-title i18n="@@usuarioCadastro">Novo usuário</mat-card-title>
+	</mat-card-header>
+	<mat-card-content >
+		<form [formGroup]="formGroup" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+			<mat-form-field appearance="fill" fxFlex>
+				  <mat-label i18n="@@nomeCompleto">Nome completo</mat-label>
+				  <input matInput formControlName="nome" [disabled]="isSubmitting">
+				  <mat-error i18n="@@requiredField">Campo obrigatório</mat-error>
+			</mat-form-field>
+			<mat-form-field appearance="fill" fxFlex>
+				  <mat-label i18n="@@email">E-mail</mat-label>
+				  <input matInput formControlName="email" [disabled]="isSubmitting">
+				  <mat-error i18n="@@requiredField">Campo obrigatório</mat-error>
+			</mat-form-field>
+			<mat-form-field appearance="fill" fxFlex>
+				  <mat-label i18n="@@senha">Senha</mat-label>
+				  <input matInput formControlName="password" [disabled]="isSubmitting">
+				  <mat-error i18n="@@requiredField">Campo obrigatório</mat-error>
+			</mat-form-field>
+			<mat-progress-bar mode="indeterminate" *ngIf="isSubmitting"></mat-progress-bar>
+			<button mat-flat-button color="primary" i18n="@@submit" fxFlex
+			[disabled]="isSubmitting || !formGroup.valid">Enviar</button>
+		</form>
+	</mat-card-content>
+</mat-card>
