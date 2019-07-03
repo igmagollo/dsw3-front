@@ -1,0 +1,57 @@
+<mat-card class="mat-elevation-z8">
+  <mat-card-header>
+    <mat-card-title>Salas de teatro</mat-card-title>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu" class="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item routerLink="new">
+        <mat-icon>add</mat-icon>
+        <span>novo</span>
+      </a>
+    </mat-menu>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="overflow-auto">
+      <div *ngIf="isLoading">
+        <div class="spacer"></div>
+        <mat-spinner></mat-spinner>
+        <div class="spacer"></div>
+      </div>
+      <p style="color: red; margin: auto;" *ngIf="hasError">Ocorreu um erro ao buscar salas de teatro.</p>
+      <table mat-table [dataSource]="dataSource" matSort *ngIf="!isLoading && !hasError">
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> E-mail </th>
+          <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cnpj">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> CNPJ </th>
+          <td mat-cell *matCellDef="let element"> {{ element.cnpj }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nome">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+          <td mat-cell *matCellDef="let element"> {{ element.nome }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cidade">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Cidade </th>
+          <td mat-cell *matCellDef="let element"> {{ element.cidade }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acoes">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element" align="end">
+            <a mat-icon-button color="primary" [routerLink]="element.id"><mat-icon>edit</mat-icon></a>
+            <a mat-icon-button color="warn" (click)="delete(element.id)"><mat-icon>clear</mat-icon></a>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </mat-card-content>
+</mat-card>

@@ -13,7 +13,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string) {
-    return this.http.post(api + 'user', { username, password });
+    return this.http.post(api + 'api/login', { username, password });
   }
 
   initialize(res) {
@@ -30,5 +30,13 @@ export class UserService {
     this.token = undefined;
     this.role = undefined;
     this.username = undefined;
+  }
+
+  getRole() {
+    return this.role;
+  }
+
+  getToken() {
+    return this.token;
   }
 }
