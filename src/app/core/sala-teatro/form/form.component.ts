@@ -16,7 +16,7 @@ export class FormComponent implements OnInit {
   submitting = false;
   form = this.fb.group({
     email: [null, [Validators.required, Validators.email]],
-    senha: [null, [Validators.required]],
+    password: [null, [Validators.required]],
     cnpj: [null, [Validators.required]],
     nome: [null, [Validators.required]],
     cidade: [null, [Validators.required]]
