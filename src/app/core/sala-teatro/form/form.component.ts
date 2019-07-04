@@ -57,6 +57,7 @@ export class FormComponent implements OnInit {
       this.submitting = true;
       this.form.disable();
       const aux = {
+        id: undefined,
         email: this.form.getRawValue().email,
         password: this.form.getRawValue().password,
         cnpj: this.form.getRawValue().cnpj,
