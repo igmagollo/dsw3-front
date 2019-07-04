@@ -39,4 +39,8 @@ export class UserService {
   getToken() {
     return this.token;
   }
+
+  getUsername() {
+    return this.username;
+  }
 }
