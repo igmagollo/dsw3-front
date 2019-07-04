@@ -8,6 +8,7 @@ import localePtExtra from '@angular/common/locales/extra/pt';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import {RouterModule} from '@angular/router';
 
 registerLocaleData(localePt, 'pt-BR', localePtExtra);
 
@@ -19,6 +20,7 @@ registerLocaleData(localePt, 'pt-BR', localePtExtra);
     CoreModule,
     BrowserModule,
     BrowserAnimationsModule,
+    RouterModule,
     AppRoutingModule
   ],
   providers: [],

@@ -4,11 +4,11 @@ import {UserService} from '../../../shared/services/user.service';
 import {SalaTeatroService} from '../../../shared/services/sala-teatro.service';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.sass']
+  selector: 'app-teatro-list',
+  templateUrl: './teatro-list.component.html',
+  styleUrls: ['./teatro-list.component.sass']
 })
-export class ListComponent implements OnInit {
+export class TeatroListComponent implements OnInit {
   displayedColumns: string[] = ['nome', 'email', 'cnpj', 'cidade'];
   dataSource = new MatTableDataSource<any>();
 
@@ -32,7 +32,7 @@ export class ListComponent implements OnInit {
   update() {
     this.isLoading = true;
     this.hasError = false;
-    this.teatro.all().subscribe(res => {
+    this.teatro.index().subscribe(res => {
       this.dataSource.data = res;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

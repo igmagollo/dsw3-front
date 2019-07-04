@@ -20,6 +20,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import {SharedModule} from '../shared/shared.module';
 import { HomeComponent } from './home/home.component';
+import {SalaTeatroModule} from './sala-teatro/sala-teatro.module';
 
 @NgModule({
   declarations: [
@@ -44,12 +45,14 @@ import { HomeComponent } from './home/home.component';
     RouterModule,
     MatCardModule,
     MatProgressBarModule,
-    SharedModule
+    SharedModule,
+    SalaTeatroModule,
   ],
   exports: [
     NavigationComponent,
     LoginComponent,
     HomeComponent,
+    SalaTeatroModule,
   ]
 })
 export class CoreModule { }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListComponent } from './list/list.component';
+import { TeatroListComponent } from './teatro-list/teatro-list.component';
 import {
   MatButtonModule,
   MatCardModule,
@@ -8,11 +8,22 @@ import {
   MatIconModule,
   MatInputModule, MatMenuModule,
   MatPaginatorModule, MatProgressBarModule, MatSnackBarModule, MatSortModule,
-  MatTableModule
+  MatTableModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
+import { FormComponent } from './form/form.component';
+import { EditTeatroComponent } from './edit-teatro/edit-teatro.component';
+import { NewTeatroComponent } from './new-teatro/new-teatro.component';
+import {RouterModule} from '@angular/router';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
-  declarations: [ListComponent],
+  declarations: [
+    TeatroListComponent,
+    FormComponent,
+    EditTeatroComponent,
+    NewTeatroComponent,
+  ],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -25,7 +36,11 @@ import {
     MatSortModule,
     MatMenuModule,
     MatProgressBarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class SalaTeatroModule { }
