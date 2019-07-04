@@ -21,6 +21,7 @@ import { RouterModule } from '@angular/router';
 import {SharedModule} from '../shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import {SalaTeatroModule} from './sala-teatro/sala-teatro.module';
+import {SiteVendaModule} from './site-venda/site-venda.module';
 
 @NgModule({
   declarations: [
@@ -47,12 +48,14 @@ import {SalaTeatroModule} from './sala-teatro/sala-teatro.module';
     MatProgressBarModule,
     SharedModule,
     SalaTeatroModule,
+    SiteVendaModule,
   ],
   exports: [
     NavigationComponent,
     LoginComponent,
     HomeComponent,
     SalaTeatroModule,
+    SiteVendaModule,
   ]
 })
 export class CoreModule { }
