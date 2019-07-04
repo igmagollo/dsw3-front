@@ -15,6 +15,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FormComponent } from './form/form.component';
 import { EditSiteComponent } from './edit-site/edit-site.component';
 import { NewSiteComponent } from './new-site/new-site.component';
+import {NgxMaskModule} from 'ngx-mask';
 
 @NgModule({
   declarations: [SiteListComponent, FormComponent, EditSiteComponent, NewSiteComponent],
@@ -35,6 +36,7 @@ import { NewSiteComponent } from './new-site/new-site.component';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxMaskModule,
   ]
 })
 export class SiteVendaModule { }

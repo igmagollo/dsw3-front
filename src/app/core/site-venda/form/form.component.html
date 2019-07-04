@@ -34,7 +34,7 @@
   </mat-form-field>
   <mat-form-field appearance="fill" fxFlex>
     <mat-label>Telefone</mat-label>
-    <input matInput formControlName="telefone">
+    <input matInput formControlName="telefone" [specialCharacters]="[ '(' ,')' , '-' ]" mask="(00)00000-0009">
     <mat-error>Campo obrigatório</mat-error>
   </mat-form-field>
   <mat-progress-bar mode="indeterminate" *ngIf="submitting"></mat-progress-bar>

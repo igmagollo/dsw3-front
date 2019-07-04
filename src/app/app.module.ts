@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import {RouterModule} from '@angular/router';
+import {IConfig, NgxMaskModule} from 'ngx-mask';
+
 
 registerLocaleData(localePt, 'pt-BR', localePtExtra);
 
@@ -21,7 +23,8 @@ registerLocaleData(localePt, 'pt-BR', localePtExtra);
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

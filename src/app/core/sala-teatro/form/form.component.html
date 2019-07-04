@@ -29,7 +29,7 @@
   </mat-form-field>
   <mat-form-field appearance="fill" fxFlex>
     <mat-label>CNPJ</mat-label>
-    <input matInput formControlName="cnpj">
+    <input matInput formControlName="cnpj" [specialCharacters]="[ '/' ,'.' , '-' ]" mask="00.000.000/0000-00">
     <mat-error>Campo obrigatório</mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill" fxFlex>

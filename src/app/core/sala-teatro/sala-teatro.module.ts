@@ -16,6 +16,7 @@ import { EditTeatroComponent } from './edit-teatro/edit-teatro.component';
 import { NewTeatroComponent } from './new-teatro/new-teatro.component';
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgxMaskModule} from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxMaskModule,
   ]
 })
 export class SalaTeatroModule { }
