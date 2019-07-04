@@ -19,12 +19,12 @@ export class Api<T> {
   }
 
   save(object: T) {
-    return this.http.post(api + this.route, JSON.stringify(object),
+    return this.http.post(api + this.route, object,
       { headers: new HttpHeaders().append('authorization', 'Bearer ' + this.user.getToken())});
   }
 
   update(object: any) {
-    return this.http.put(api + this.route + '/' + object.id, JSON.stringify(object),
+    return this.http.put(api + this.route + '/' + object.id, object,
       { headers: new HttpHeaders().append('authorization', 'Bearer ' + this.user.getToken())});
   }
 
