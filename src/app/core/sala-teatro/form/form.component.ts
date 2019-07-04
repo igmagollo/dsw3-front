@@ -35,7 +35,7 @@ export class FormComponent implements OnInit {
         this.teatrinho = res;
         const aux = {
           email: res.email,
-          senha: res.senha,
+          password: res.password,
           cnpj: res.cnpj,
           nome: res.nome,
           cidade: res.cidade
@@ -56,7 +56,15 @@ export class FormComponent implements OnInit {
     if (!this.edit) {
       this.submitting = true;
       this.form.disable();
-      this.teatro.save(this.form.getRawValue()).subscribe(res => {
+      const aux = {
+        email: this.form.getRawValue().email,
+        password: this.form.getRawValue().password,
+        cnpj: this.form.getRawValue().cnpj,
+        nome: this.form.getRawValue().nome,
+        cidade: this.form.getRawValue().cidade,
+        username: this.form.getRawValue().email
+      };
+      this.teatro.save(aux).subscribe(res => {
         this.snack.open('Cadastro efetuado com sucesso!', 'fechar', { duration: 5000 });
         this.route.navigateByUrl('/teatro');
       }, err => {
