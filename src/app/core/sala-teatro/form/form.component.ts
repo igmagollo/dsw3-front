@@ -33,7 +33,14 @@ export class FormComponent implements OnInit {
       this.form.disable();
       this.teatro.get(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(res => {
         this.teatrinho = res;
-        this.form.setValue(this.teatrinho);
+        const aux = {
+          email: res.email,
+          senha: res.senha,
+          cnpj: res.cnpj,
+          nome: res.nome,
+          cidade: res.cidade
+        };
+        this.form.setValue(aux);
         this.submitting = false;
         this.form.enable();
       }, err => {
