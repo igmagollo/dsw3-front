@@ -26,6 +26,10 @@ export class NavigationComponent {
     this.router.navigate(['/']);
   }
 
+  get role() {
+    return this.user.getRole();
+  }
+
   isLoggedIn(): boolean {
     return this.user.loggedIn;
   }

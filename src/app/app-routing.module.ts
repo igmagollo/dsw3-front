@@ -13,25 +13,46 @@ import {PromocaoListComponent} from './core/promocao/promocao-list/promocao-list
 import {MinhasPromocoesComponent} from './core/promocao/minhas-promocoes/minhas-promocoes.component';
 import {NewPromocaoComponent} from './core/promocao/new-promocao/new-promocao.component';
 import {EditPromocaoComponent} from './core/promocao/edit-promocao/edit-promocao.component';
+import {RoleGuard} from './shared/guards/role.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'teatro', children: [
       { path: '', component: TeatroListComponent },
-      { path: 'new', component: NewTeatroComponent },
-      { path: ':id', component: EditTeatroComponent }
+      { path: 'new', component: NewTeatroComponent, canActivate: [RoleGuard], data: {
+          roles: ['ROLE_ADMIN']
+        } },
+      { path: ':id', component: EditTeatroComponent, canActivate: [RoleGuard], data: {
+          roles: ['ROLE_ADMIN']
+        } }
     ]},
   { path: 'site', children: [
-      { path: '', component: SiteListComponent },
-      { path: 'new', component: NewSiteComponent },
-      { path: ':id', component: EditSiteComponent }
-    ]},
+      { path: '', component: SiteListComponent, canActivate: [RoleGuard], data: {
+          roles: ['ROLE_ADMIN']
+        } },
+      { path: 'new', component: NewSiteComponent, canActivate: [RoleGuard], data: {
+          roles: ['ROLE_ADMIN']
+        } },
+      { path: ':id', component: EditSiteComponent, canActivate: [RoleGuard], data: {
+          roles: ['ROLE_ADMIN']
+        } }
+    ], canActivate: [RoleGuard], data: {
+      roles: ['ROLE_ADMIN']
+    }},
   { path: 'promocao', children: [
-      { path: '', component: PromocaoListComponent },
-      { path: 'mine', component: MinhasPromocoesComponent },
-      { path: 'new', component: NewPromocaoComponent },
-      { path: ':id', component: EditPromocaoComponent },
+      { path: '', component: PromocaoListComponent, canActivate: [RoleGuard], data: {
+          roles: ['ROLE_TEATRO', 'ROLE_SITE', 'ROLE_ADMIN']
+        } },
+      { path: 'mine', component: MinhasPromocoesComponent, canActivate: [RoleGuard], data: {
+        roles: ['ROLE_TEATRO']
+        } },
+      { path: 'new', component: NewPromocaoComponent, canActivate: [RoleGuard], data: {
+          roles: ['ROLE_TEATRO']
+        }  },
+      { path: ':id', component: EditPromocaoComponent, canActivate: [RoleGuard], data: {
+          roles: ['ROLE_TEATRO']
+        }  },
     ]},
 ];
 

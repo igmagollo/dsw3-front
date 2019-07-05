@@ -54,7 +54,7 @@ export class FormComponent implements OnInit {
           site: this.promocaozinha.site.id,
           preco: this.promocaozinha.preco,
           nome: this.promocaozinha.nome,
-          dia_hora: this.promocaozinha.dia_hora
+          dia_hora: this.promocaozinha.dia_hora.replace(' ', 'T')
         };
         this.form.setValue(aux);
         this.submitting = false;
@@ -93,7 +93,7 @@ export class FormComponent implements OnInit {
         site: this.sites.find(site => site.id === this.form.getRawValue().site),
         teatro,
         preco: this.form.getRawValue().preco,
-        dia_hora: this.form.getRawValue().dia_hora
+        dia_hora: this.form.getRawValue().dia_hora.replace('T', ' ')
       };
       this.promocao.save(aux).subscribe(res => {
         this.snack.open('Cadastro efetuado com sucesso!', 'fechar', { duration: 5000 });

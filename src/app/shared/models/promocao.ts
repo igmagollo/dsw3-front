@@ -7,5 +7,5 @@ export interface Promocao {
   teatro: SalaTeatro;
   nome: string;
   preco: string;
-  dia_hora: Date;
+  dia_hora: string;
 }

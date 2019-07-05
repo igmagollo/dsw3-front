@@ -5,7 +5,7 @@
       [opened]="(isHandset$ | async) === false">
     <mat-divider></mat-divider>
     <mat-nav-list>
-      <a mat-list-item routerLink="promocao">
+      <a mat-list-item routerLink="promocao" *ngIf="role === 'ROLE_ADMIN' || role === 'ROLE_TEATRO' || role === 'ROLE_SITE'">
         <mat-icon mat-list-icon>attach_money</mat-icon>
         <h4 mat-line i18n="@@promocoesTitle">Promoções</h4>
       </a>
@@ -13,7 +13,7 @@
         <mat-icon mat-list-icon>theaters</mat-icon>
         <h4 mat-line i18n="@@salaTeatroTitle">Sala de Teatro</h4>
       </a>
-      <a mat-list-item routerLink="site">
+      <a mat-list-item routerLink="site" *ngIf="role === 'ROLE_ADMIN'">
         <mat-icon mat-list-icon>credit_card</mat-icon>
         <h4 mat-line i18n="@@siteVendasTitle">Site de Vendas</h4>
       </a>
