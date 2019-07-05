@@ -2,7 +2,7 @@
   <mat-card class="mat-elevation-z8">
     <mat-card-header>
       <mat-card-title>Sites de venda</mat-card-title>
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu" class="menu">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu" class="menu" *ngIf="isAdmin()">
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
@@ -19,7 +19,7 @@
           <mat-spinner></mat-spinner>
           <div class="spacer"></div>
         </div>
-        <p style="color: red; margin: auto;" *ngIf="hasError">Ocorreu um erro ao buscar salas de teatro.</p>
+        <p style="color: red; margin: auto;" *ngIf="hasError">Ocorreu um erro ao buscar informações.</p>
         <table mat-table [dataSource]="dataSource" matSort *ngIf="!isLoading && !hasError">
           <ng-container matColumnDef="email">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> E-mail </th>

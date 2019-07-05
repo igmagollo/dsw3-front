@@ -29,6 +29,10 @@ export class SiteListComponent implements OnInit {
     this.update();
   }
 
+  isAdmin() {
+    return this.user.getRole() === 'ROLE_ADMIN';
+  }
+
   update() {
     this.isLoading = true;
     this.hasError = false;

@@ -29,6 +29,14 @@ export class TeatroListComponent implements OnInit {
     this.update();
   }
 
+  isAdmin() {
+    return this.user.getRole() === 'ROLE_ADMIN';
+  }
+
+  filtraCidade(value) {
+    this.dataSource.filter = value;
+  }
+
   update() {
     this.isLoading = true;
     this.hasError = false;
@@ -36,6 +44,9 @@ export class TeatroListComponent implements OnInit {
       this.dataSource.data = res;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      this.dataSource.filterPredicate = (data, filter) => {
+        return data.cidade.toLowerCase().contains(filter.toLowerCase().trim());
+      };
       this.isLoading = false;
     }, err => {
       this.hasError = true;

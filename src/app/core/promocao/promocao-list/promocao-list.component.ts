@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import {MatPaginator, MatSnackBar, MatSort, MatTableDataSource} from '@angular/material';
 import {UserService} from '../../../shared/services/user.service';
 import {PromocaoService} from '../../../shared/services/promocao.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-promocao-list',
@@ -22,13 +23,25 @@ export class PromocaoListComponent implements OnInit {
 
   constructor(private user: UserService,
               private promocao: PromocaoService,
-              private snack: MatSnackBar) { }
+              private snack: MatSnackBar,
+              private route: Router) { }
 
   ngOnInit() {
     if (this.isMine) {
+      if (this.user.getRole() !== 'ROLE_TEATRO') {
+        this.route.navigateByUrl('/promocao');
+      }
       this.displayedColumns.push('acoes');
     }
     this.update();
+  }
+
+  isRoleTeatro() {
+    return this.user.getRole() === 'ROLE_TEATRO';
+  }
+
+  isAdmin() {
+    return this.user.getRole() === 'ROLE_ADMIN';
   }
 
   update() {

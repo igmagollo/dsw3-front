@@ -2,7 +2,7 @@
 <mat-card class="mat-elevation-z8">
   <mat-card-header>
     <mat-card-title>Salas de teatro</mat-card-title>
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu" class="menu">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu" class="menu" *ngIf="isAdmin()">
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
@@ -14,6 +14,9 @@
   </mat-card-header>
   <mat-card-content>
     <div class="overflow-auto">
+      <mat-form-field>
+        <input matInput placeholder="Filtrar cidade" (keyup)="filtraCidade($event.target.value)">
+      </mat-form-field>
       <div *ngIf="isLoading" style="display: flex; flex-direction: row">
         <div class="spacer"></div>
         <mat-spinner></mat-spinner>

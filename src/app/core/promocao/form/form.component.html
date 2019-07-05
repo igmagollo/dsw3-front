@@ -1,0 +1,36 @@
+<ng-container *ngIf="!edit; else edition">
+  <h1 class="mat-h1">Nova sala de teatro</h1>
+</ng-container>
+<ng-template #edition>
+  <h1 class="mat-h1">Editar sala de teatro</h1>
+</ng-template>
+<form [formGroup]="form"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayoutGap="10px"
+      (submit)="submit()">
+  <mat-form-field appearance="fill" fxFlex>
+    <mat-label>Nome</mat-label>
+    <input matInput formControlName="nome">
+    <mat-error>Campo obrigatório</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill" fxFlex>
+    <mat-label>Preço</mat-label>
+    <input matInput formControlName="preco" mask="dot_separator">
+    <mat-error>Campo obrigatório</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill" fxFlex *ngIf="!edit">
+    <mat-label>Site de vendas</mat-label>
+    <mat-select formControlName="site">
+      <mat-option *ngFor="let site of sites" [value]="site.id">{{ site.nome + ' ' + site.url }}</mat-option>
+    </mat-select>
+    <mat-error>Campo obrigatório</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill" fxFlex *ngIf="!edit">
+    <mat-label>Dia e hora</mat-label>
+    <input matInput type="datetime-local" formControlName="dia_hora">
+    <mat-error>Campo obrigatório</mat-error>
+  </mat-form-field>
+  <mat-progress-bar mode="indeterminate" *ngIf="submitting"></mat-progress-bar>
+  <button mat-flat-button color="primary" type="submit" fxFlex [disabled]="submitting">Enviar</button>
+</form>
