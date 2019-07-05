@@ -45,7 +45,7 @@ export class TeatroListComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.dataSource.filterPredicate = (data, filter) => {
-        return data.cidade.toLowerCase().contains(filter.toLowerCase().trim());
+        return data.cidade.toLowerCase().includes(filter.toLowerCase().trim());
       };
       this.isLoading = false;
     }, err => {
