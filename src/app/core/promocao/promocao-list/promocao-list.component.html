@@ -33,7 +33,7 @@
           <td mat-cell *matCellDef="let element"> {{ element.preco }} </td>
         </ng-container>
 
-        <ng-container matColumnDef="tetro_nome">
+        <ng-container matColumnDef="teatro_nome">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome do teatro </th>
           <td mat-cell *matCellDef="let element"> {{ element.taetro.nome }} </td>
         </ng-container>
@@ -45,7 +45,7 @@
 
         <ng-container matColumnDef="dia_hora">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Dia e Hora </th>
-          <td mat-cell *matCellDef="let element"> {{ element.dia_hora.getDate() + '/' + (element.dia_hora.getMonth() + 1) + '/' + element.dia_hora.getFullYear() + ' ' + element.dia_hora.getHours() + ':' + element.dia_hora.getMinutes() }} </td>
+          <td mat-cell *matCellDef="let element"> {{ element.dia_hora }} </td>
         </ng-container>
 
         <ng-container matColumnDef="acoes">
